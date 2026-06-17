@@ -12,8 +12,8 @@
 
 ## Spring Boot
 
-- Usar **Spring Profiles** para separar contextos — ex.: `local` (LocalStack + Postgres em container) e `aws` (serviços reais).
-- Endpoints/credenciais resolvidos por perfil: localmente apontam para LocalStack/container; na nuvem, para a AWS real (ver `04-dados-e-persistencia.md` e `07-infraestrutura-e-ambientes.md`).
+- Usar **Spring Profiles** para separar contextos — ex.: `local` (LocalStack) e `aws` (serviços reais).
+- Endpoints/credenciais resolvidos por perfil: localmente o **endpoint do DynamoDB** aponta para o LocalStack; na nuvem, para o DynamoDB real (ver `04-dados-e-persistencia.md` e `07-infraestrutura-e-ambientes.md`).
 
 ## Segredos
 

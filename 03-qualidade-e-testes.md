@@ -20,7 +20,7 @@
 ## Estratégia de testes
 
 - Foco forte em **testes unitários** sobre as regras de domínio e os casos de uso (camadas internas da Clean Architecture).
-- **Testes de integração com Testcontainers** — alinhado ao "banco local via Docker" (ver `04-dados-e-persistencia.md`): sobe o Postgres real em container durante os testes, sem mocar o banco.
+- **Testes de integração com Testcontainers (módulo LocalStack)** — alinhado ao "DynamoDB via LocalStack" (ver `04-dados-e-persistencia.md`): sobe o DynamoDB emulado em container durante os testes, sem mocar o banco.
 - Contract testing (Pact / Spring Cloud Contract) só quando houver mais de um serviço se comunicando — não adicionar peso antes disso.
 
 ## Critério de "pronto"

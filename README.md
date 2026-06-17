@@ -23,7 +23,7 @@ Não é documentação de um projeto específico: é a **camada de preferências
 | `01-arquitetura-do-projeto.md` | Arquitetura do código | Clean Architecture + Use Cases, DDD, tratamento de erros, Resilience4j |
 | `02-stacks-tecnologicas.md` | Stacks tecnológicas | Java 21 + Maven, Python 3.13 (Lambdas), Spring Boot (REST) |
 | `03-qualidade-e-testes.md` | Qualidade e testes | Cobertura mínima 95% por módulo, JUnit/JaCoCo, pytest, Testcontainers |
-| `04-dados-e-persistencia.md` | Dados e persistência | PostgreSQL, Flyway, Docker local, LocalStack, RDS |
+| `04-dados-e-persistencia.md` | Dados e persistência | DynamoDB on-demand, tabelas via Terraform, LocalStack |
 | `05-observabilidade.md` | Observabilidade | Logs JSON estruturados (id, mensagem, horário, nível, correlationId) |
 | `06-ci-cd-e-deploy.md` | CI/CD e deploy | GitHub Actions, feature branches → main, PR automático, ECR |
 | `07-infraestrutura-e-ambientes.md` | Infraestrutura | AWS, Terraform, Docker, ambiente único, execução local |
@@ -49,6 +49,7 @@ Não é documentação de um projeto específico: é a **camada de preferências
 ## 4. Regras transversais (valem para tudo)
 
 - **Rodar local sempre:** todo sistema deve conseguir rodar 100% localmente (LocalStack + Docker), espelhando o comportamento na AWS. A diferença entre local e nuvem é só configuração de ambiente.
+- **Menor recurso possível sob demanda:** preferir capacidade on-demand/serverless e dimensionamento mínimo na AWS (ex.: DynamoDB pay-per-request).
 - **Idioma:** todos os artefatos em **Português (Brasil)** — código, comentários, logs, commits, corpo de PR, documentação (ver `08-governanca-e-documentacao.md`).
 - **Documentação:** toda aplicação tem `README` na raiz, técnico e funcional, criado ou atualizado a cada entrega.
 - **Nuvem:** **AWS** como provedor padrão.
