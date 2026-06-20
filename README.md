@@ -20,6 +20,7 @@ Não é documentação de um projeto específico: é a **camada de preferências
 |---|---|---|
 | `README.md` | Guia (este arquivo) | O que é, como usar |
 | `INTEGRACAO.md` | Integração | Como projetos/agentes apontam para este repo |
+| `VERSIONAMENTO.md` | Versionamento | SemVer da arquitetura, quando incrementar, como a esteira consome |
 | `01-arquitetura-do-projeto.md` | Arquitetura do código | Clean Architecture + Use Cases, DDD, tratamento de erros, Resilience4j |
 | `02-stacks-tecnologicas.md` | Stacks tecnológicas | Java 21 + Maven, Python 3.13 (Lambdas), Spring Boot (REST) |
 | `03-qualidade-e-testes.md` | Qualidade e testes | Cobertura mínima 95% por módulo, JUnit/JaCoCo, pytest, Testcontainers |
@@ -55,6 +56,7 @@ Não é documentação de um projeto específico: é a **camada de preferências
 - **Nuvem:** **AWS** como provedor padrão.
 - **Segredos:** nunca no repositório (ver `09-seguranca-e-segredos.md`).
 - **Spec antes de codar** tarefa não-trivial; **commit/push** liberados, **deploy só via esteira** (ver `13-colaboracao-com-ia.md`).
+- **Versionamento:** a arquitetura é versionada por SemVer (marcador no topo do `CONSTITUTION.md`); cada nota de qualidade da esteira carimba a versão + SHA usados (ver `VERSIONAMENTO.md`).
 
 ## 5. Convenções de manutenção
 
