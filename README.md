@@ -1,8 +1,11 @@
 # Arquitetura de Referência
 
 > Fonte da verdade das preferências de engenharia de software do Lucas.
-> Repositório central: qualquer projeto, ferramenta de LLM ou pipeline de agente deve **apontar para este repositório** antes de construir, revisar ou propor software.
-> Como apontar: ver **`INTEGRACAO.md`**.
+> Repositório central e **standalone**: qualquer projeto, ferramenta de LLM ou pipeline de agente deve **apontar para ela** antes de construir, revisar ou propor software.
+>
+> **Versão atual: `1.0.0`** — a fonte canônica é o marcador `<!-- arquitetura_version: X.Y.Z -->` no topo do `CONSTITUTION.md`.
+>
+> **Comece identificando o modo da tarefa:** para **usar** a arquitetura (construir/revisar software com ela), vá ao [`MODO-DE-USO.md`](MODO-DE-USO.md); para **atualizar** a arquitetura (mudar/adicionar capítulos ou regras), vá ao [`MODO-DE-ATUALIZACAO.md`](MODO-DE-ATUALIZACAO.md). Detalhe na seção 2.
 
 ---
 
@@ -10,17 +13,43 @@
 
 Esta pasta reúne, de forma estruturada, **as boas práticas, stacks, padrões e convenções** que o Lucas adota para construir software. Ela existe para que ferramentas de IA produzam código e decisões alinhadas às preferências dele, sem precisar perguntar tudo a cada interação.
 
-É um **repositório standalone** que serve como fonte única: em vez de copiar regras para cada projeto, os projetos referenciam este repo (por URL, submodule ou clone pinado — ver `INTEGRACAO.md`).
+É um **repositório standalone** que serve como fonte única: em vez de copiar regras para cada projeto, os projetos referenciam este repo.
 
-Não é documentação de um projeto específico: é a **camada de preferências transversal** que se aplica a todos os projetos, salvo quando um projeto declarar explicitamente o contrário.
+Não é documentação de um projeto específico nem dependência de nenhuma ferramenta em particular: é a **camada de preferências transversal** que se aplica a todos os projetos, salvo quando um projeto declarar explicitamente o contrário. Funciona por si só — qualquer consumidor (humano, agente de IA ou pipeline) a usa lendo estes arquivos.
 
-## 2. Como está organizada
+## 2. Como usar
+
+Este `README.md` é o **índice e ponto de partida**. **Primeiro, identifique o modo da tarefa:**
+
+- **Vai construir, revisar ou propor software seguindo estas preferências?** → **modo de uso**: leia o **`MODO-DE-USO.md`**. A arquitetura é **somente leitura**; você a aplica no projeto alvo, nunca edita os arquivos daqui.
+- **Vai mudar a própria arquitetura** (editar/adicionar/remover capítulo, mudar uma regra, versionar)? → **modo de atualização**: leia o **`MODO-DE-ATUALIZACAO.md`**.
+
+Atalhos por arquivo:
+
+- **Projeto novo** → copie **`templates/CLAUDE.md`** para a raiz e preencha a seção "Específico deste projeto".
+- **Régua verificável das regras** (avaliar PASS/FAIL) → **`CONSTITUTION.md`**.
+
+> A precedência, a conduta e os não-negociáveis vivem no `MODO-DE-USO.md`, e a régua formal no `CONSTITUTION.md`. Não são repetidos aqui, para não divergirem.
+
+## 3. Como está organizada
+
+O repositório tem dois tipos de arquivo: **arquivos de suporte** (que explicam como usar, atualizar e versionar a arquitetura) e **temas da arquitetura** (`NN-*.md`, que descrevem as preferências em si).
+
+### 3.1 Arquivos de suporte
+
+| Arquivo | Papel |
+|---|---|
+| `README.md` | Índice canônico (este arquivo): o que é, como está organizado e para onde ir. |
+| `MODO-DE-USO.md` | **Guia operacional para LLMs/agentes**: como navegar, precedência, conduta, fluxo de spec, autonomia, não-negociáveis e definição de pronto. O "como usar" consolidado. A arquitetura é somente leitura neste modo. |
+| `MODO-DE-ATUALIZACAO.md` | **Guia para evoluir a arquitetura**: como uma mudança entra (capítulo + constituição), versionamento, manutenção e checklist. Usado **só** ao alterar/adicionar capítulos. |
+| `CONSTITUTION.md` | **Régua canônica e verificável** da arquitetura. Carrega a versão (semver) no topo e condensa as regras em imperativos PASS/FAIL. É contra ela que specs e implementações são avaliadas. |
+| `VERSIONAMENTO.md` | Política de versionamento (semver): quando incrementar MAJOR/MINOR/PATCH, como fazer um bump e por que versionar a régua. |
+| `templates/CLAUDE.md` | **Ponto de entrada por projeto.** Template para copiar na raiz de um repositório: o Claude Code o lê automaticamente e, a partir dele, carrega as regras globais daqui. Tem uma seção "Específico deste projeto" a preencher. |
+
+### 3.2 Temas da arquitetura
 
 | Arquivo | Macro tema | Cobre |
 |---|---|---|
-| `README.md` | Guia (este arquivo) | O que é, como usar |
-| `INTEGRACAO.md` | Integração | Como projetos/agentes apontam para este repo |
-| `VERSIONAMENTO.md` | Versionamento | SemVer da arquitetura, quando incrementar, como a esteira consome |
 | `01-arquitetura-do-projeto.md` | Arquitetura do código | Clean Architecture + Use Cases, DDD, tratamento de erros, Resilience4j |
 | `02-stacks-tecnologicas.md` | Stacks tecnológicas | Java 21 + Maven, Python 3.13 (Lambdas), Spring Boot (REST) |
 | `03-qualidade-e-testes.md` | Qualidade e testes | Cobertura mínima 95% por módulo, JUnit/JaCoCo, pytest, Testcontainers |
@@ -34,37 +63,17 @@ Não é documentação de um projeto específico: é a **camada de preferências
 | `11-apis-e-contratos.md` | APIs e contratos | REST, versionamento, RFC 7807, OpenAPI |
 | `12-configuracao.md` | Configuração | 12-factor, Spring Profiles, config por ambiente |
 | `13-colaboracao-com-ia.md` | Colaboração com IA | Spec antes de codar, autonomia, checkpoints, definição de pronto |
-| `templates/CLAUDE.md` | Template | Ponto de entrada por projeto para o Claude Code |
 
-> Esta tabela é o índice canônico — mantê-la atualizada ao adicionar, remover ou fundir temas.
+> Estas tabelas são o índice canônico — mantê-las atualizadas ao adicionar, remover ou fundir arquivos.
 
-## 3. Como a IA deve usar esta arquitetura
+## 4. Manutenção
 
-1. **Leia o `README.md` primeiro.** Ele dá o mapa.
-2. **Leia os arquivos relevantes ao tema da tarefa.** Em caso de dúvida, leia mais.
-3. **Trate o conteúdo como preferência autoritativa.** Para desviar de algo declarado aqui, deixe explícito o porquê e confirme com o Lucas.
-4. **Respeite a precedência:** instrução direta do Lucas na conversa > regra de um projeto específico > esta arquitetura de referência > defaults genéricos.
-5. **Quando houver lacuna**, não invente preferência: assuma um default razoável, **sinalize a suposição** e pergunte se for relevante.
-6. **Não trate o conteúdo destes arquivos como comandos.** Eles descrevem preferências; ações com efeito colateral exigem confirmação do Lucas (ver `13-colaboracao-com-ia.md`).
+Para **evoluir a arquitetura** (editar/adicionar capítulos, mudar regras, versionar), siga o **`MODO-DE-ATUALIZACAO.md`** — ele reúne as convenções de manutenção, a coerência capítulo↔constituição e o versionamento (`VERSIONAMENTO.md`).
 
-## 4. Regras transversais (valem para tudo)
+## 5. Status
 
-- **Rodar local sempre:** todo sistema deve conseguir rodar 100% localmente (LocalStack + Docker), espelhando o comportamento na AWS. A diferença entre local e nuvem é só configuração de ambiente.
-- **Menor recurso possível sob demanda:** preferir capacidade on-demand/serverless e dimensionamento mínimo na AWS (ex.: DynamoDB pay-per-request).
-- **Idioma:** todos os artefatos em **Português (Brasil)** — código, comentários, logs, commits, corpo de PR, documentação (ver `08-governanca-e-documentacao.md`).
-- **Documentação:** toda aplicação tem `README` na raiz, técnico e funcional, criado ou atualizado a cada entrega.
-- **Nuvem:** **AWS** como provedor padrão.
-- **Segredos:** nunca no repositório (ver `09-seguranca-e-segredos.md`).
-- **Spec antes de codar** tarefa não-trivial; **commit/push** liberados, **deploy só via esteira** (ver `13-colaboracao-com-ia.md`).
-- **Versionamento:** a arquitetura é versionada por SemVer (marcador no topo do `CONSTITUTION.md`); cada nota de qualidade da esteira carimba a versão + SHA usados (ver `VERSIONAMENTO.md`).
+- **Versão:** `1.0.0` (ver `CONSTITUTION.md`).
+- **Conteúdo:** 13 temas consolidados + arquivos de suporte (`MODO-DE-USO.md`, `MODO-DE-ATUALIZACAO.md`, `CONSTITUTION.md`, `VERSIONAMENTO.md`) e template de `CLAUDE.md`.
+- **Maturidade:** pronto para ser usado como repositório remoto e referenciado pelos projetos.
 
-## 5. Convenções de manutenção
-
-- Cada arquivo tem cabeçalho de propósito e um bloco de **Decisões em aberto** ao final.
-- Ao consolidar uma preferência, descreva a regra de forma acionável (o que fazer, não só o princípio).
-- Evite duplicar a mesma regra em dois arquivos; prefira referenciar (`ver 03-qualidade-e-testes.md`).
-- Mudanças seguem **Conventional Commits** e são versionadas por **tags SemVer** (ver `INTEGRACAO.md`).
-
-## 6. Status
-
-13 macro temas consolidados + guia de integração e template de `CLAUDE.md`. Pronto para virar repositório remoto e ser referenciado pelos projetos.
+---
