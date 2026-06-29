@@ -1,4 +1,4 @@
-<!-- arquitetura_version: 1.0.0 -->
+<!-- arquitetura_version: 1.1.0 -->
 <!-- Régua canônica de conformidade da arquitetura de referência.
      A esteira grava a versão semântica acima e o SHA do commit junto de cada nota. -->
 
@@ -10,8 +10,8 @@ em conflito entre uma demanda e esta constituição, **a arquitetura de referên
 
 ## Metadados
 
-- **Versão da arquitetura de referência:** 1.0.0
-- **Última atualização:** 2026-06-18
+- **Versão da arquitetura de referência:** 1.1.0
+- **Última atualização:** 2026-06-28
 - **Versionamento:** toda mudança de regra incrementa esta versão (semver) e o marcador
   `<!-- arquitetura_version: X.Y.Z -->` no topo. A esteira grava esta versão **e** o SHA do commit
   junto de cada nota, para comparabilidade ao longo do tempo. Política detalhada em
@@ -112,6 +112,16 @@ em conflito entre uma demanda e esta constituição, **a arquitetura de referên
 - A IA respeita todas as regras desta constituição; em conflito, a arquitetura prevalece.
 - A tabela de autonomia e as regras de colaboração seguem `13-colaboracao-com-ia.md`.
 
+## 14. Frontend
+
+- Frontend em **TypeScript** com `strict: true`; o build roda **type-check antes do bundle** (`tsc && vite build`).
+- Build/dev com **Vite**; pacotes com **pnpm** (lockfile commitado; `--frozen-lockfile` no CI).
+- Design System **Material 3**: cor sempre via tokens (`--md-sys-color-*` + camada semântica do app); **nenhuma cor hardcoded** fora da camada de tokens.
+- Camadas separadas (`api`, `components`, `pages`, `router`); acesso ao backend **só pela camada `api/`** tipada — sem `fetch` solto em páginas/componentes.
+- Acessibilidade: todo interativo com **rótulo acessível** e **navegável por teclado**.
+- Testes de front com **Vitest** (unitário) e **Playwright** (e2e); cobertura segue a régua do §3.
+- Detalhe e convenções em `14-frontend.md`.
+
 ---
 
 ## Exceções concedidas
@@ -125,3 +135,4 @@ durável é feita via PR a este arquivo (com bump de versão).
 | Versão | Data | Mudança |
 |---|---|---|
 | 1.0.0 | 2026-06-18 | Versão inicial em uso. |
+| 1.1.0 | 2026-06-28 | Adiciona o capítulo 14 (Frontend): TypeScript + Vite + pnpm, Design System Material 3, arquitetura de SPA, a11y e testes de front. |

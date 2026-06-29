@@ -43,6 +43,7 @@ Em resumo: pelos gatilhos, identifique os temas que a tarefa toca e **abra esses
 | API REST, endpoint, contrato, versionamento de API, RFC 7807, paginação, OpenAPI | `11-apis-e-contratos.md` |
 | configuração por ambiente, 12-factor, Spring Profiles, variável de ambiente, endpoint por perfil | `12-configuracao.md` |
 | como colaborar com o Lucas, escrever spec, autonomia/permissões, checkpoints, definição de pronto | `13-colaboracao-com-ia.md` |
+| frontend, SPA, TypeScript no browser, Vite, pnpm, Design System/Material 3, tokens de UI, componente/página/rota, acessibilidade, Vitest/Playwright | `14-frontend.md` |
 
 ## 3. Precedência
 
@@ -90,6 +91,7 @@ Entre uma demanda e a constituição, **a arquitetura prevalece** — a menos qu
 - **APIs:** REST versionado por path (`/v1`); erros em RFC 7807; OpenAPI automático. → `11`
 - **Configuração:** 12-factor; config vem do ambiente; Spring Profiles (`local`/`aws`). → `12`
 - **Colaboração com IA:** §4 a §6 acima. → `13`
+- **Frontend:** TypeScript `strict` + Vite + pnpm; Design System **Material 3** com cor só via tokens; acesso ao backend só pela camada `api/`; a11y (rótulo + teclado); Vitest + Playwright. → `14`
 
 ## 8. Definição de "pronto" (checklist do agente)
 
@@ -103,5 +105,5 @@ Antes de declarar uma tarefa concluída, garanta:
 
 ## 9. Versão
 
-- **Versão atual: `1.0.0`** — fonte canônica é o marcador `<!-- arquitetura_version: X.Y.Z -->` no topo do `CONSTITUTION.md`.
+- **Versão atual: `1.1.0`** — fonte canônica é o marcador `<!-- arquitetura_version: X.Y.Z -->` no topo do `CONSTITUTION.md`.
 - Ao registrar uma avaliação ou nota de qualidade, carimbe a **versão + SHA** do `CONSTITUTION.md` usados, para comparabilidade ao longo do tempo (ver `VERSIONAMENTO.md`).

@@ -3,7 +3,7 @@
 > Fonte da verdade das preferências de engenharia de software do Lucas.
 > Repositório central e **standalone**: qualquer projeto, ferramenta de LLM ou pipeline de agente deve **apontar para ela** antes de construir, revisar ou propor software.
 >
-> **Versão atual: `1.0.0`** — a fonte canônica é o marcador `<!-- arquitetura_version: X.Y.Z -->` no topo do `CONSTITUTION.md`.
+> **Versão atual: `1.1.0`** — a fonte canônica é o marcador `<!-- arquitetura_version: X.Y.Z -->` no topo do `CONSTITUTION.md`.
 >
 > **Comece identificando o modo da tarefa:** para **usar** a arquitetura (construir/revisar software com ela), vá ao [`MODO-DE-USO.md`](MODO-DE-USO.md); para **atualizar** a arquitetura (mudar/adicionar capítulos ou regras), vá ao [`MODO-DE-ATUALIZACAO.md`](MODO-DE-ATUALIZACAO.md). Detalhe na seção 2.
 
@@ -63,6 +63,7 @@ O repositório tem dois tipos de arquivo: **arquivos de suporte** (que explicam 
 | `11-apis-e-contratos.md` | APIs e contratos | REST, versionamento, RFC 7807, OpenAPI |
 | `12-configuracao.md` | Configuração | 12-factor, Spring Profiles, config por ambiente |
 | `13-colaboracao-com-ia.md` | Colaboração com IA | Spec antes de codar, autonomia, checkpoints, definição de pronto |
+| `14-frontend.md` | Frontend | TypeScript + Vite + pnpm, Design System Material 3, arquitetura de SPA, a11y, Vitest/Playwright |
 
 > Estas tabelas são o índice canônico — mantê-las atualizadas ao adicionar, remover ou fundir arquivos.
 
@@ -72,8 +73,8 @@ Para **evoluir a arquitetura** (editar/adicionar capítulos, mudar regras, versi
 
 ## 5. Status
 
-- **Versão:** `1.0.0` (ver `CONSTITUTION.md`).
-- **Conteúdo:** 13 temas consolidados + arquivos de suporte (`MODO-DE-USO.md`, `MODO-DE-ATUALIZACAO.md`, `CONSTITUTION.md`, `VERSIONAMENTO.md`) e template de `CLAUDE.md`.
+- **Versão:** `1.1.0` (ver `CONSTITUTION.md`).
+- **Conteúdo:** 14 temas consolidados + arquivos de suporte (`MODO-DE-USO.md`, `MODO-DE-ATUALIZACAO.md`, `CONSTITUTION.md`, `VERSIONAMENTO.md`) e template de `CLAUDE.md`.
 - **Maturidade:** pronto para ser usado como repositório remoto e referenciado pelos projetos.
 
 ---

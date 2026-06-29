@@ -19,6 +19,7 @@ Antes de construir, revisar ou propor software:
    - **Arquitetura:** Clean Architecture + Use Cases, DDD; Resilience4j em integrações.
    - **Testes:** cobertura ≥ 95% por módulo; Testcontainers em integração.
    - **Local sempre:** todo sistema roda 100% local (LocalStack + Docker).
+   - **Frontend:** TypeScript `strict` + Vite + pnpm; Design System Material 3 (cor só via tokens); acesso ao backend só pela camada `api/`; a11y; Vitest + Playwright.
    - **CI/CD:** GitHub Actions; feature branches → `main`; PR automático quando CI passa; deploy só pela esteira.
    - **Observabilidade:** logs JSON estruturados (id, mensagem, horário, nível, correlationId); não logar PII.
    - **Segredos:** nunca no repositório.
